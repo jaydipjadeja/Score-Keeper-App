@@ -11,11 +11,14 @@ public class MainActivity extends AppCompatActivity {
      * Total Runs, Wicktes and Balls For Team A and B.
      */
     int scoreTeamA = 0;
-    int scoreTeamB = 0;
     int wktsTeamA = 0;
     int ballsTeamA = 0;
+    int oversTeamA = 0;
+
+    int scoreTeamB = 0;
     int wktsTeamB = 0;
     int ballsTeamB = 0;
+    int oversTeamB = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,14 +64,44 @@ public class MainActivity extends AppCompatActivity {
     public void WktsForTeamA(View view){
         wktsTeamA += 1;
         displayWktsForTeamA(wktsTeamA);
+        overInc();
     }
 
     /**
-     * Displays Balls for Team A.
+     * Over increment for Team A.
      */
-    public void BallsForTeamA(View view){
+    public void overInc(){
         ballsTeamA += 1;
+        if(ballsTeamA == 6){
+            oversTeamA += 1;
+            ballsTeamA = 0;
+            displayOversForTeamA(oversTeamA);
+        }
+
         displayBallsForTeamA(ballsTeamA);
+    }
+
+    /**
+     * Displays Dot Balls for Team A.
+     */
+    public void DotBallsForTeamA(View view){
+        overInc();
+    }
+
+    /**
+     * Displays Wide Balls for Team A.
+     */
+    public void wideBallsForTeamA(View view){
+        scoreTeamA += 1;
+        displayRunsForTeamA(scoreTeamA);
+    }
+
+    /**
+     * Displays No Balls for Team A.
+     */
+    public void noBallsForTeamA(View view){
+        scoreTeamA += 1;
+        displayRunsForTeamA(scoreTeamA);
     }
 
     /**
@@ -77,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
     public void SixRunsForTeamA(View view){
         scoreTeamA += 6;
         displayRunsForTeamA(scoreTeamA);
+        overInc();
     }
 
     /**
@@ -85,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
     public void FourRunsForTeamA(View view){
         scoreTeamA += 4;
         displayRunsForTeamA(scoreTeamA);
+        overInc();
     }
 
     /**
@@ -93,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
     public void ThreeRunsForTeamA(View view){
         scoreTeamA += 3;
         displayRunsForTeamA(scoreTeamA);
+        overInc();
     }
 
     /**
@@ -101,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
     public void TwoRunsForTeamA(View view){
         scoreTeamA += 2;
         displayRunsForTeamA(scoreTeamA);
+        overInc();
     }
 
     /**
@@ -109,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
     public void OneRunForTeamA(View view){
         scoreTeamA += 1;
         displayRunsForTeamA(scoreTeamA);
+        overInc();
     }
 
     /**
@@ -128,6 +166,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * Displays the calculated Overs for Team B.
+     */
+    public void displayOversForTeamB(int ball) {
+        TextView scoreView = (TextView) findViewById(R.id.team_b_over);
+        scoreView.setText(String.valueOf(ball));
+    }
+
+
+    /**
      * Displays the given balls for Team B.
      */
     public void displayBallsForTeamB(int ball) {
@@ -141,15 +188,46 @@ public class MainActivity extends AppCompatActivity {
     public void WktsForTeamB(View view){
         wktsTeamB += 1;
         displayWktsForTeamB(wktsTeamB);
+        overIncB();
     }
 
     /**
-     * Displays Balls for Team B.
+     * Over increment for Team B.
      */
-    public void BallsForTeamB(View view){
+    public void overIncB(){
         ballsTeamB += 1;
+        if(ballsTeamB == 6){
+            oversTeamB += 1;
+            ballsTeamB = 0;
+            displayOversForTeamB(oversTeamB);
+        }
+
         displayBallsForTeamB(ballsTeamB);
     }
+
+    /**
+     * Displays Dot Balls for Team B.
+     */
+    public void DotBallsForTeamB(View view){
+        overIncB();
+    }
+
+    /**
+     * Displays Wide Balls for Team B.
+     */
+    public void wideBallsForTeamB(View view){
+        scoreTeamB += 1;
+        displayRunsForTeamB(scoreTeamB);
+    }
+
+    /**
+     * Displays No Balls for Team B.
+     */
+    public void noBallsForTeamB(View view){
+        scoreTeamB += 1;
+        displayRunsForTeamB(scoreTeamB);
+    }
+
 
     /**
      * Displays 6 Runs for Team B.
@@ -157,6 +235,7 @@ public class MainActivity extends AppCompatActivity {
     public void SixRunsForTeamB(View view){
         scoreTeamB += 6;
         displayRunsForTeamB(scoreTeamB);
+        overIncB();
     }
 
     /**
@@ -165,6 +244,7 @@ public class MainActivity extends AppCompatActivity {
     public void FourRunsForTeamB(View view){
         scoreTeamB += 4;
         displayRunsForTeamB(scoreTeamB);
+        overIncB();
     }
 
     /**
@@ -173,6 +253,7 @@ public class MainActivity extends AppCompatActivity {
     public void ThreeRunsForTeamB(View view){
         scoreTeamB += 3;
         displayRunsForTeamB(scoreTeamB);
+        overIncB();
     }
 
     /**
@@ -181,6 +262,7 @@ public class MainActivity extends AppCompatActivity {
     public void TwoRunsForTeamB(View view){
         scoreTeamB += 2;
         displayRunsForTeamB(scoreTeamB);
+        overIncB();
     }
 
     /**
@@ -189,6 +271,7 @@ public class MainActivity extends AppCompatActivity {
     public void OneRunForTeamB(View view){
         scoreTeamB += 1;
         displayRunsForTeamB(scoreTeamB);
+        overIncB();
     }
 
 
@@ -203,9 +286,11 @@ public class MainActivity extends AppCompatActivity {
         scoreTeamA = 0;
         wktsTeamA = 0;
         ballsTeamA = 0;
+        oversTeamA = 0;
         displayRunsForTeamA(scoreTeamA);
         displayWktsForTeamA(wktsTeamA);
         displayBallsForTeamA(ballsTeamA);
+        displayOversForTeamA(oversTeamA);
 
         /**
          * Reset for Team B
@@ -214,8 +299,10 @@ public class MainActivity extends AppCompatActivity {
         scoreTeamB = 0;
         wktsTeamB = 0;
         ballsTeamB = 0;
+        oversTeamB = 0;
         displayRunsForTeamB(scoreTeamB);
         displayWktsForTeamB(wktsTeamB);
         displayBallsForTeamB(ballsTeamB);
+        displayOversForTeamB(oversTeamB);
     }
 }
